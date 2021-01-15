@@ -5,12 +5,11 @@ using UnityEngine;
 public class CameraRaycast : MonoBehaviour
 {
     private Camera cam;
-
     private Ray ray;
     private RaycastHit hit;
 
     private void Start() {
-        cam = Camera.main;
+        cam = this.GetComponent<Camera>();
     }
 
     private void FixedUpdate() {

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DeformPlane : MonoBehaviour
 {
-    [SerializeField] float radius;
-    [SerializeField] float power;
+    [SerializeField] float radius = 0.8f;
+    [SerializeField] float power = 0.7f;
 
     [Tooltip("For expanding the inner circle")]
-    [SerializeField] float scaleFactor = 0f;
+    [SerializeField] float scaleFactor = 0.2f;
 
     [SerializeField] Transform cylinder;
+    [SerializeField] List<Transform> holePoints;
 
     private Camera cam;
     private Ray ray;
@@ -18,23 +19,30 @@ public class DeformPlane : MonoBehaviour
 
     private MeshFilter meshFilter;
     private Mesh mesh;
-    Vector3[] vertices;
+    private Vector3[] vertices;
 
     private void Start() {
         cam = Camera.main;
         meshFilter = GetComponent<MeshFilter>();
         mesh = meshFilter.mesh;
         vertices = mesh.vertices;
+
+        CreateHoles();
     }
 
     private void FixedUpdate() {
         ray = cam.ScreenPointToRay(Input.mousePosition);
+
         if (Input.GetMouseButton(0) && Physics.Raycast(ray, out hit)) {
             Deform(hit.point);
         }
     }
 
     public void Deform(Vector3 deformPosition) {
+        Deform(deformPosition, radius);
+    }
+
+    public void Deform(Vector3 deformPosition, float radius) {
         deformPosition = transform.InverseTransformPoint(deformPosition);
 
         for (int i = 0; i < vertices.Length; i++) {
@@ -49,6 +57,12 @@ public class DeformPlane : MonoBehaviour
         }
 
         mesh.vertices = vertices;
-        Instantiate(cylinder, new Vector3(hit.point.x, hit.point.y, transform.position.z + 0.5f), Quaternion.Euler(270f, 0f, 0f));
+        Instantiate(cylinder, new Vector3(deformPosition.x, deformPosition.y + 10f, transform.position.z + 0.5f), Quaternion.Euler(270f, 0f, 0f));
+    }
+
+    private void CreateHoles() {
+        foreach(Transform point in holePoints) {
+            Deform(point.position);
+        }
     }
 }
