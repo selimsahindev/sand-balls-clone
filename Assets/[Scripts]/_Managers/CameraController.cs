@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] LevelManager levelManager;
     [SerializeField] float minHeight = 3f;
     [SerializeField] float smoothTime = 0.3F;
-    [SerializeField] Transform[] ballsInLevel;
 
+    private GameObject[] ballsInLevel;
     private Vector3 velocity = Vector3.zero;
     private Vector3 cameraOffset = Vector3.zero;
     private float lowestBallHeight;
@@ -22,6 +24,7 @@ public class CameraController : MonoBehaviour
     #endregion
 
     private void Start() {
+        ballsInLevel = levelManager.ballsInLevel;
         lowestBallHeight = transform.position.y;
         cameraOffset = transform.position;
         targetHeight = transform.position.y;
@@ -36,8 +39,8 @@ public class CameraController : MonoBehaviour
             targetHeight = minHeight;
         } else {
             for (int i = 0; i < ballsInLevel.Length; i++) {
-                if (ballsInLevel[i].position.y < lowestBallHeight) {
-                    lowestBallHeight = ballsInLevel[i].position.y;
+                if (ballsInLevel[i].transform.position.y < lowestBallHeight) {
+                    lowestBallHeight = ballsInLevel[i].transform.position.y;
                     targetHeight = lowestBallHeight;
                 }
             }
