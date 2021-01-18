@@ -34,7 +34,9 @@ public class DeformPlane : MonoBehaviour
         ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButton(0) && Physics.Raycast(ray, out hit)) {
-            Deform(hit.point);
+            if (hit.collider.CompareTag("Deformable")) {
+                Deform(hit.point);
+            }
         }
     }
 

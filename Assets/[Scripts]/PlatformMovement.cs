@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Lumin;
 
 public class PlatformMovement : MonoBehaviour
 {
+    [SerializeField] float moveSpeedFactor = 1f;
     [SerializeField] float minY = -10f;
     [SerializeField] LevelManager levelManager;
 
@@ -27,10 +29,11 @@ public class PlatformMovement : MonoBehaviour
         int ballsInTruck = levelManager.GetBallCount();
 
         if (ballsInTruck > 0) {
-            float step = ballsInTruck * Time.fixedDeltaTime;
+            float step = ballsInTruck * moveSpeedFactor * Time.fixedDeltaTime;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(startingPos.x, minY, startingPos.z), step);
         } else {
-            transform.position = Vector3.MoveTowards(transform.position, startingPos, 10 * Time.fixedDeltaTime);
+            float step = 10 * moveSpeedFactor * Time.fixedDeltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, startingPos, step);
         }
     }
 }
