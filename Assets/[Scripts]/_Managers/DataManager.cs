@@ -3,12 +3,10 @@
 public class DataManager : MonoBehaviour
 {
     private readonly string LEVEL_DATA = "level";
-    private readonly string MONEY_DATA = "money";
     private readonly string SOUND_DATA = "sound";
     private readonly string VIBRATION_DATA = "vibration";
 
     public int level;
-    public int money;
     public bool sound;
     public bool vibration;
 
@@ -32,7 +30,6 @@ public class DataManager : MonoBehaviour
     private void GetDatas()
     {
         level = PlayerPrefs.GetInt(LEVEL_DATA, 1);
-        money = PlayerPrefs.GetInt(MONEY_DATA, 0);
         sound = PlayerPrefs.GetInt(SOUND_DATA, 1) == 1;
         vibration = PlayerPrefs.GetInt(VIBRATION_DATA, 1) == 1;
     }
@@ -41,13 +38,6 @@ public class DataManager : MonoBehaviour
     {
         level = _level;
         PlayerPrefs.SetInt(LEVEL_DATA, level);
-        PlayerPrefs.Save();
-    }
-
-    public void SetMoney(int _money)
-    {
-        money = _money;
-        PlayerPrefs.SetInt(MONEY_DATA, money);
         PlayerPrefs.Save();
     }
 

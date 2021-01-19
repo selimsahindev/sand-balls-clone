@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int level = -1;
-    public int money = 0;
 
     #region Singleton
     public static GameManager instance = null;
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour
         {
             level = DataManager.instance.level;
         }
-        money = DataManager.instance.money;
 
         // Get neccessary prefab assets here from resources folder. And use into another script
         // ****
@@ -43,16 +41,11 @@ public class GameManager : MonoBehaviour
     }
 
     #region DataOperations
-    public void AddMoney(int amount)
-    {
-        money += amount;
-        DataManager.instance.SetMoney(money);
-    }
 
-    public void LevelUp()
-    {
-        DataManager.instance.SetLevel(++level);
-    }
+    //public void LevelUp()
+    //{
+    //    DataManager.instance.SetLevel(++level);
+    //}
     #endregion
 
     #region SceneOperations
