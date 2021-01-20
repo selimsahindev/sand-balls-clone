@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isTutorialPlayed = false;
     public int level = -1;
 
     #region Singleton

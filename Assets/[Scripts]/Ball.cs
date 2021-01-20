@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     private bool isPainted = false;
     private Transform parent;
     private Rigidbody rb;
+    private Collider col;
     private Renderer ballRenderer;
 
     private void Start() {
@@ -35,6 +36,8 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("TruckBed")) {
             transform.parent = other.transform;
+            rb.velocity = Vector3.zero;
+
             levelManager.IncreaseBallCount();
         }
     }
@@ -42,6 +45,7 @@ public class Ball : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("TruckBed")) {
             transform.parent = parent;
+
             levelManager.DecreaseBallCount();
         }
     }
