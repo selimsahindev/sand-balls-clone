@@ -7,11 +7,12 @@ public class PlatformMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeedFactor = 1f;
     [SerializeField] float minY = -10f;
-    [SerializeField] LevelManager levelManager;
 
     private Vector3 startingPos;
+    private LevelManager levelManager;
 
     private void Start() {
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         startingPos = transform.position;
     }
 

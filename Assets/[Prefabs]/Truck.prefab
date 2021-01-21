@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 2616396185581606476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20408162, y: 0.1, z: 0.25}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 1697898159558498347}
   m_Father: {fileID: 5774445409660564094}
@@ -385,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 2802620838164090909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20408162, y: 0.1, z: 0.25}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 5774445409660564094}
   m_RootOrder: 0
@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 8098695071220578078}
   m_Layer: 0
   m_Name: Truck
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1121,7 +1121,7 @@ Transform:
   m_GameObject: {fileID: 6586834609995229380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.9, y: 10, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6364368798518002470}
   - {fileID: 4614468683292525495}

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] LevelManager levelManager;
     [SerializeField] bool isActive = false;
 
+    LevelManager levelManager;
     private bool isPainted = false;
     private Transform parent;
     private Rigidbody rb;
-    private Collider col;
     private Renderer ballRenderer;
 
     private void Start() {
         parent = this.transform.parent;
         rb = GetComponent<Rigidbody>();
         ballRenderer = GetComponent<Renderer>();
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
 
         if (isActive) {
             rb.isKinematic = false;

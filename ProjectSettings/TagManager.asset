@@ -8,6 +8,8 @@ TagManager:
   - TruckBed
   - Ball
   - Deformable
+  - LevelManager
+  - Truck
   layers:
   - Default
   - TransparentFX

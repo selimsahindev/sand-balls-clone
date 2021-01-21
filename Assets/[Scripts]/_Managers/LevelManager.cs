@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public TruckController truck;
     public GameObject[] ballsInLevel;
 
     [HideInInspector]
@@ -29,6 +28,7 @@ public class LevelManager : MonoBehaviour
     [Header("Ball Colors")]
     public Color[] ballColors;
 
+    private TruckController truck;
     private int ballsInTruckBed = 0;
     private bool endSequenceCalled = false;
 
@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() {
+        truck = GameObject.FindGameObjectWithTag("Truck").GetComponent<TruckController>();
         UpdateLevelColors();
     }
 

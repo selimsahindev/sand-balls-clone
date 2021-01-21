@@ -59,6 +59,7 @@ public class DeformPlane : MonoBehaviour
         }
 
         mesh.vertices = vertices;
+
         Instantiate(cylinder, new Vector3(deformPosition.x, deformPosition.y + 10f, transform.position.z + 0.5f), Quaternion.Euler(270f, 0f, 0f));
     }
 

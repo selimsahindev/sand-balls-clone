@@ -18,6 +18,8 @@ public class TruckController : MonoBehaviour
     }
 
     private void SetAnimations() {
+        Vector3 parentScale = transform.parent.localScale;
+
         if (idleSequence != null) {
             idleSequence.Kill();
         }
@@ -26,8 +28,8 @@ public class TruckController : MonoBehaviour
         moveSequence = DOTween.Sequence();
 
         // Idle Animation
-        idleSequence.Append(transform.DOScaleY(1.02f, 0.3f))
-            .Join(transform.DOScaleY(0.98f, 0.3f))
+        idleSequence.Append(transform.DOScaleY(1.02f / parentScale.y, 0.3f))
+            .Join(transform.DOScaleY(0.98f / parentScale.y, 0.3f))
             .SetLoops(-1);
 
         // Move Animation (Considering the size of parent object)
