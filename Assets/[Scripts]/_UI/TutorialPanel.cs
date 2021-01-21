@@ -19,7 +19,13 @@ public class TutorialPanel : MonoBehaviour
             return;
         }
         SetAnimations();
-    } 
+    }
+
+    private void Update() {
+        if (Input.GetMouseButton(0)) {
+            DeactivateOnTouch();
+        }
+    }
 
     public void DeactivateOnTouch() {
         if (handSequence != null) {

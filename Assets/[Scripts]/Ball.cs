@@ -64,7 +64,7 @@ public class Ball : MonoBehaviour
     }
 
     private void PaintBall() {
-        ballRenderer.material.color = Random.ColorHSV();
+        ballRenderer.material.color = levelManager.ballColors[Random.Range(0, levelManager.ballColors.Length)];
         isPainted = true;
     }
 }

@@ -32,6 +32,7 @@ public class TruckController : MonoBehaviour
 
         // Move Animation (Considering the size of parent object)
         moveSequence.Append(transform.DOMoveX(25f, 3f));
+        moveSequence.SetEase(Ease.InSine);
         moveSequence.Pause();
     }
 }
