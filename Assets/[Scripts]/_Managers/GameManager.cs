@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isTutorialPlayed = false;
-    public int level = -1;
+    public int level = 1;
 
     #region Singleton
     public static GameManager instance = null;
@@ -41,28 +41,14 @@ public class GameManager : MonoBehaviour
         // ****
     }
 
-    #region DataOperations
+    public void NextLevel() {
+        DataManager.instance.SetLevel(++level);
+        Invoke("LoadNextScene", 2f);
+    }
 
-    //public void LevelUp()
-    //{
-    //    DataManager.instance.SetLevel(++level);
-    //}
-    #endregion
-
-    #region SceneOperations
-    public void RestartScene()
-    {
+    public void LoadNextScene() {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OpenScene(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-
-    public void OpenScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-    #endregion
 }
