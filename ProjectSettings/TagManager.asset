@@ -10,6 +10,9 @@ TagManager:
   - Deformable
   - LevelManager
   - Truck
+  - FadePanel
+  - EndGamePanel
+  - UIManager
   layers:
   - Default
   - TransparentFX

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] LevelManager levelManager;
     [SerializeField] float minHeight = 3f;
     [SerializeField] float smoothTime = 0.3F;
 
+    private LevelManager levelManager;
     private GameObject[] ballsInLevel;
     private Vector3 velocity = Vector3.zero;
     private Vector3 cameraOffset = Vector3.zero;
@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour
     #endregion
 
     private void Start() {
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         ballsInLevel = levelManager.ballsInLevel;
         lowestBallHeight = transform.position.y;
         cameraOffset = transform.position;

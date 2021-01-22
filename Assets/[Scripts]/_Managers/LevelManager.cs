@@ -28,7 +28,6 @@ public class LevelManager : MonoBehaviour
     [Header("Ball Colors")]
     public Color[] ballColors;
 
-    private TruckController truck;
     private int ballsInTruckBed = 0;
     private bool endSequenceCalled = false;
 
@@ -37,20 +36,25 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() {
-        truck = GameObject.FindGameObjectWithTag("Truck").GetComponent<TruckController>();
         UpdateLevelColors();
     }
 
     private void FixedUpdate() {
-        if (!endSequenceCalled && isPlatformDown) {
-            Invoke("StartEndingSequence", 2f);
-            endSequenceCalled = true;
+        if (isPlatformDown) {
+            Invoke("HandleEndOfGame", 2f);
         }
     }
 
-    public void StartEndingSequence() {
-        truck.Move();
-        GameManager.instance.NextLevel();
+    public void SuccessSequence() {
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().ShowEndGamePanel(true);
+    }
+
+    public void RestartLevel() {
+        GameManager.instance.RestartLevel();
+    }
+
+    public void FailureSequence() {
+        // Show Restart UI
     }
 
     public int GetBallCount() {
@@ -63,6 +67,21 @@ public class LevelManager : MonoBehaviour
 
     public void DecreaseBallCount() {
         ballsInTruckBed--;
+    }
+
+    public void HandleEndOfGame() {
+        if (endSequenceCalled)
+            return;
+
+        if (ballsInTruckBed >= (ballsInLevel.Length / 3f)) {
+            SuccessSequence();
+            Debug.Log("Level Success");
+        } else {
+            FailureSequence();
+            Debug.Log("Level Failed");
+        }
+
+        endSequenceCalled = true;
     }
 
     private void UpdateLevelColors() {

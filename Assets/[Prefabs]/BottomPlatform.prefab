@@ -252,7 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeedFactor: 0.2
   minY: -10
-  levelManager: {fileID: 0}
 --- !u!1 &7459040088323982809
 GameObject:
   m_ObjectHideFlags: 0
