@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
             targetHeight = minHeight;
         } else {
             for (int i = 0; i < ballsInLevel.Length; i++) {
-                if (ballsInLevel[i].transform.position.y < lowestBallHeight) {
+                if (ballsInLevel[i].GetComponent<Ball>().isActive && ballsInLevel[i].transform.position.y < lowestBallHeight) {
                     lowestBallHeight = ballsInLevel[i].transform.position.y;
                     targetHeight = lowestBallHeight;
                 }

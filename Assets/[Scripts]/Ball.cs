@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] bool isActive = false;
+    public bool isActive = false;
 
     LevelManager levelManager;
     private bool isPainted = false;
