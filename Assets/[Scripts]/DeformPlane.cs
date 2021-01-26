@@ -31,9 +31,13 @@ public class DeformPlane : MonoBehaviour
     }
 
     private void FixedUpdate() {
+#if UNITY_EDITOR
         ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        if (Input.GetMouseButton(0) && Physics.Raycast(ray, out hit)) {
+#else
+        Touch touch = Input.GetTouch(0);
+        ray = cam.ScreenPointToRay(new Vector3(touch.position.x, touch.position.y, 0f));
+#endif
+        if ((Input.GetMouseButton(0) || Input.touchCount > 0) && Physics.Raycast(ray, out hit)) {
             if (hit.collider.CompareTag("Deformable")) {
                 Deform(hit.point);
             }
